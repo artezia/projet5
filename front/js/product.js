@@ -1,7 +1,7 @@
 function getUrlId () {
   let params = (new URL(document.location)).searchParams; // récupérer l'ID de l'URL
   const id = params.get('id');
-  // console.log(id);
+  console.log(id);
   return id;
   }
 async function getProductId(id){ // Fonction pour récupérer les données depuis l'API avec l'ID

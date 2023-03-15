@@ -123,7 +123,7 @@ function deleteProduct(id, color){ //// Supprimer article du panier ////
   document.location.reload();
 }
 /////////// renseigner le formulaire ///////////
-const regexEmail = new RegExp ("^[a-z0-9._-]+[@]{1}[a-z0-9._-]+[.]{1}[a-z]{2,10}$");  //regex email : minimum 1 caractère (chiffres, lettres) @, suivi de minimum un point, suivi de 2 lettres au minimum
+const regexEmail = new RegExp ("^[a-z0-9._-]+[@]{1}[a-z0-9._-]+[.]{1}[a-z]{2,15}$");  //regex email : minimum 1 caractère (chiffres, lettres) @, suivi de minimum un point, suivi de 2 lettres au minimum
 const regexAddress = new RegExp ("^[0-9a-z A-Z,.'-çñâàäéèêëïîìôöòüùû ]{8,100}$"); //regex adresse : minimum 5 caractères (lettres, chiffres, accents)
 const regexText = new RegExp ("^[A-Za-zÀ-ÖØ-öø-ÿ-' ]{2,}$"); //regex texte (prenom, nom) : minimum 2 caractères (lettres, accents, tirets, apostrophes et espaces)
 const regexText2 = new RegExp ("^[A-Za-zÀ-ÖØ-öø-ÿ-' ]{1,}$"); //regex texte (ville) : minimum 1 caractère (lettres, accents, tirets, apostrophes et espaces)
@@ -286,7 +286,7 @@ function postForm () {  //// envoi du formulaire ////
       })
       .then((response) => response.json()) 
       .then((data)=>{ 
-        // console.log(data);
+        console.log(data);
         document.location.href = "confirmation.html?orderId=" + data.orderId; 
       })       
       .catch ((e) => alert("Un problème est survenu lors de la commande. Veuillez nous contacter au 01 23 45 67 89 ou par email : support@name.com"));

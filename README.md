@@ -5,6 +5,8 @@ This is the front end and back end server for Project 5 of the Web Developer pat
 ### Back end Prerequisites ###
 
 You will need to have Node and `npm` installed locally on your machine.
+https://nodejs.org/en/
+
 
 ### Back end Installation ###
 
@@ -13,3 +15,7 @@ can then run the server with `node server`.
 The server should run on `localhost` with default port `3000`. If the
 server runs on another port for any reason, this is printed to the
 console when the server starts, e.g. `Listening on port 3001`.
+
+or install git from https://git-scm.com/
+install git. Go to the back folder, right click and run "git bash here". Type "node server".
+
