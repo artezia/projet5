@@ -1,11 +1,10 @@
 function getUrlId () {
   let params = (new URL(document.location)).searchParams; // récupérer l'ID de l'URL
   const id = params.get('id');
-  console.log(id);
   return id;
-  }
+}
 async function getProductId(id){ // Fonction pour récupérer les données depuis l'API avec l'ID
-  return fetch(`http://localhost:3000/api/products/${id}`)
+  return await fetch(`http://localhost:3000/api/products/${id}`)
 }
 function showProduct(dataProducts){ 
     document.getElementsByClassName("item")[0].innerHTML =
@@ -68,10 +67,9 @@ if (btn != null) {
     const id = getUrlId ();
     var color = document.querySelector("#colors").value
     var quantity = document.querySelector("#quantity").value
-    // console.log(color);
-    // console.log(quantity);
-      if (color === "" || quantity == null || quantity <= 0 || quantity >= 100 ) {
+    if (color === "" || quantity == null || quantity <= 0 || quantity >= 100 ) {
         alert("Merci de sélectionner une couleur ou une quantité correcte.");
+        return;
     }
     else {
       let product = {'id':id,'color':color,'quantity':quantity}
@@ -87,7 +85,7 @@ function addToCart(product) {
       cart.push(product); 
       localStorage.setItem("selectedProduct", JSON.stringify(cart)); 
       alert("Votre produit a bien été ajouté au panier")
-    } else { // si le panier n'est pas vide
+    } else {
     const choseProduct = cart.find((productsInCart) => (product.id == productsInCart.id) && (product.color == productsInCart.color));
     if (choseProduct) { 
       const addSameProductQuantity = Number(product.quantity) + Number(choseProduct.quantity);
@@ -103,7 +101,5 @@ function addToCart(product) {
       localStorage.setItem("selectedProduct", JSON.stringify(cart)); // transforme l'objet en chaine de caractère
       alert("Votre produit a bien été ajouté au panier")
     }
-    // console.log(choseProduct);
-    // console.log(cart);
   }
 }

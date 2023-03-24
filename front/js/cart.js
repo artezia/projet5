@@ -5,20 +5,14 @@ function getBasket(){ //// récupération du Local Storage ////
   if(basket==undefined || basket==null){
     return [];
   }else{
-    // console.log(basket)
     return JSON.parse(basket)
   }
 }
 function showProducts(){  //// affichage des données du Local Storage dans le html ////
   let baskets = getBasket();
-  // console.log(baskets);
   if(baskets.length>0){
     for (let selectedProduct of baskets){ 
-      const objetLs ={
-        id : selectedProduct.id,
-        color: selectedProduct.color,
-        quantity: selectedProduct.quantity
-      }
+      const objetLs ={...selectedProduct}
       fetch(myUrl + objetLs.id) 
       .then(function(response){ 
         return response.json(); 
@@ -60,17 +54,14 @@ function showProducts(){  //// affichage des données du Local Storage dans le h
 showProducts()
 function getNumberOfArticles(){ //// Afficher nombre d'article dans le panier ////
   let basket = getBasket();
-  // console.log(basket)
   if(basket){ 
-    let totalQuantity = basket; 
     let showProducts = document.querySelector("#totalQuantity"); // ID pour afficher dans la page
     let totalItems = 0; //nombre d'article initial
-      for (let selectedProduct of totalQuantity){ //pour chaque produit du contenu du local storage
+      for (let selectedProduct of basket){ //pour chaque produit du contenu du local storage
       totalItems += Number(selectedProduct.quantity); //ajout en nombre de la quantité présente pour tous les éléments du local storage
     }
   showProducts.textContent = totalItems; //et affichage sur la page
-  // console.log(totalItems);
-  }}
+}}
 getNumberOfArticles()
 function getTotalPrice(){ //// Afficher le montant du panier ////
   let basket = getBasket()
@@ -78,11 +69,7 @@ function getTotalPrice(){ //// Afficher le montant du panier ////
     let totalPrice = basket;
     let totalItemsPrice = 0; // prix initial
     for (let selectedProduct of totalPrice){
-      let objetLs ={
-        id : selectedProduct.id, 
-        color: selectedProduct.color, 
-        quantity: selectedProduct.quantity 
-      }
+      let objetLs ={...selectedProduct}
       fetch(myUrl + objetLs.id) 
       .then(function(response){ 
         return response.json(); 
@@ -113,14 +100,12 @@ function deleteProduct(id, color){ //// Supprimer article du panier ////
   let btnCancel = "Souhaitez vous supprimer cet article ?";
   if (confirm(btnCancel) == true) {
     text = "Votre produit a bien été supprimé";
-  } else {
-    return;
+    let basket = getBasket()
+    let productToDelete = basket.filter((selectedProduct) => selectedProduct.id != id) && basket.filter((selectedProduct) => selectedProduct.color != color); // retourne un nouveau tableau
+    localStorage.setItem("selectedProduct", JSON.stringify(productToDelete));
+    alert("L'article a bien été supprimé du panier.");
+    document.location.reload();
   }
-  let basket = getBasket()
-  let productToDelete = basket.filter((selectedProduct) => selectedProduct.id != id) && basket.filter((selectedProduct) => selectedProduct.color != color); // retourne un nouveau tableau
-  localStorage.setItem("selectedProduct", JSON.stringify(productToDelete));
-  alert("L'article a bien été supprimé du panier.");
-  document.location.reload();
 }
 /////////// renseigner le formulaire ///////////
 const regexEmail = new RegExp ("^[a-z0-9._-]+[@]{1}[a-z0-9._-]+[.]{1}[a-z]{2,15}$");  //regex email : minimum 1 caractère (chiffres, lettres) @, suivi de minimum un point, suivi de 2 lettres au minimum
@@ -255,8 +240,6 @@ function postForm () {  //// envoi du formulaire ////
     let address = document.querySelector("#address").value; 
     let city = document.querySelector("#city").value;
     let email = document.querySelector("#email").value; 
-    // console.log(firstNameValidation(firstName), lastNameValidation(lastName), addressValidation (address), cityValidation (city), emailValidation(email));
-    // alert(email)
     if (firstName ==="" || lastName ==="" || address ==="" ||city ==="" ||email ===""){ 
       alert("Veuillez remplir le formulaire afin de valider la commande.");
     } else if ((firstNameValidation(firstName) == false) || (lastNameValidation(lastName) == false) || (addressValidation(address) == false) || (cityValidation(city) == false) || (emailValidation(email) === false)){ 
@@ -286,7 +269,6 @@ function postForm () {  //// envoi du formulaire ////
       })
       .then((response) => response.json()) 
       .then((data)=>{ 
-        console.log(data);
         document.location.href = "confirmation.html?orderId=" + data.orderId; 
       })       
       .catch ((e) => alert("Un problème est survenu lors de la commande. Veuillez nous contacter au 01 23 45 67 89 ou par email : support@name.com"));
