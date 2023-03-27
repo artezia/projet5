@@ -1,21 +1,16 @@
 # Kanap #
+Voici les dossiers front et back du projet 5 OpenClassRoom. 
+Dans ce projet il s'agissait d'intégrer dynamiquement les éléments de l’API dans les différentes pages web avec JavaScript. 
 
-This is the front end and back end server for Project 5 of the Web Developer path.
+# Back end pré-recquis #
 
-### Back end Prerequisites ###
+Vous devez avoir Node installé localement sur votre ordinateur. https://nodejs.org/en/
 
-You will need to have Node and `npm` installed locally on your machine.
-https://nodejs.org/en/
+# 1. Lancer le site avec Live Server sur VS CODE #
 
+Créer un dossier dans lequel vous allez accueillir le projet.
+Cloner le repository : git clone https://github.com/artezia/projet5
+Ouvrir le terminal et saisissez la commande `cd projet5/back` 
+Saississez ensuite `npm run start` puis `node server`
 
-### Back end Installation ###
-
-Clone this repo. From the "back" folder of the project, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
-
-or install git from https://git-scm.com/
-install git. Go to the back folder, right click and run "git bash here". Type "node server".
-
+Vous pouvez maintenant aller dans le dossier front, ouvrir le fichier index.html avec live server (VS Code) pour afficher le site web.
