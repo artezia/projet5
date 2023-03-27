@@ -60,16 +60,13 @@ function showProducts(){  //// affichage des données du Local Storage dans le h
 showProducts()
 function getNumberOfArticles(){ //// Afficher nombre d'article dans le panier ////
   let basket = getBasket();
-  // console.log(basket)
   if(basket){ 
-    let totalQuantity = basket; 
     let showProducts = document.querySelector("#totalQuantity"); // ID pour afficher dans la page
     let totalItems = 0; //nombre d'article initial
-      for (let selectedProduct of totalQuantity){ //pour chaque produit du contenu du local storage
+      for (let selectedProduct of basket){ //pour chaque produit du contenu du local storage
       totalItems += Number(selectedProduct.quantity); //ajout en nombre de la quantité présente pour tous les éléments du local storage
     }
   showProducts.textContent = totalItems; //et affichage sur la page
-  // console.log(totalItems);
   }}
 getNumberOfArticles()
 function getTotalPrice(){ //// Afficher le montant du panier ////
@@ -113,7 +110,8 @@ function deleteProduct(id, color){ //// Supprimer article du panier ////
   let btnCancel = "Souhaitez vous supprimer cet article ?";
   if (confirm(btnCancel) == true) {
     text = "Votre produit a bien été supprimé";
-  } else {
+  } 
+  else {
     return;
   }
   let basket = getBasket()

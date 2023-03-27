@@ -12,7 +12,8 @@ function getApi(){ // Fonction pour récupérer les données depuis l'API
     })
 }
 function showProduct(dataProduct){ // insertion des variables dans le html de la section avec l'id items
-  document.getElementById("items").innerHTML += // concaténation des éléments à afficher +=
+  // concaténation des éléments à afficher +=
+  document.getElementById("items").innerHTML += 
   `<a href="./product.html?id=${dataProduct._id}">
     <article>
       <img src="${dataProduct.imageUrl}" alt="${dataProduct.altTxt}">
@@ -21,10 +22,10 @@ function showProduct(dataProduct){ // insertion des variables dans le html de la
     </article>
   </a>`;
 }
-async function boucle(){  // liaison entre la récupération des données et leur affichage avec une boucle
+async function getProducts(){  // liaison entre la récupération des données et leur affichage avec une boucle
   const products = await getApi(); 
   for(product of products){
     showProduct(product); 
   }
 }
-boucle();
+getProducts();
