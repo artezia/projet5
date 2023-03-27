@@ -75,7 +75,7 @@ function getTotalPrice(){ //// Afficher le montant du panier ////
     let totalPrice = basket;
     let totalItemsPrice = 0; // prix initial
     for (let selectedProduct of totalPrice){
-      let objetLs ={
+      const objetLs ={
         id : selectedProduct.id, 
         color: selectedProduct.color, 
         quantity: selectedProduct.quantity 
