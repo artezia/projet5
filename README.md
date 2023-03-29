@@ -14,4 +14,4 @@ Ouvrir le terminal, utiliser la commande `cd` pour aller dans le dossier back.
 Saisissez ensuite `npm install` et `node server` dans le temrinal.
 Le serveur doit s'exécuter sur localhost avec le port par défaut 3000. A défaut, utilisez le port 3001.
 
-Vous pouvez maintenant aller dans le dossier front, ouvrir le fichier index.html avec live server (VS Code) pour afficher le site web.
+Vous pouvez maintenant aller dans le dossier front, ouvrir le fichier index.html ou le lancer directement depuis VS Code avec live server.
