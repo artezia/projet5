@@ -4,13 +4,14 @@ Dans ce projet il s'agissait d'intégrer dynamiquement les éléments de l’API
 
 # Back end pré-recquis #
 
-Vous devez avoir Node installé localement sur votre ordinateur. https://nodejs.org/en/
+Vous devez avoir Node installé localement et `npm` sur votre ordinateur. https://nodejs.org/en/
 
-# 1. Lancer le site avec Live Server sur VS CODE #
+# Lancer le site #
 
-Créer un dossier dans lequel vous allez accueillir le projet.
-Cloner le repository : git clone https://github.com/artezia/projet5
-Ouvrir le terminal et saisissez la commande `cd projet5/back` 
-Saississez ensuite `npm run start` puis `node server`
+Utiliser les fichiers contenu dans le zip fournit ou Créer un dossier dans lequel vous allez accueillir le projet en clonant le repository : git clone https://github.com/artezia/projet5
+
+Ouvrir le terminal, utiliser la commande `cd` pour aller dans le dossier back.  
+Saisissez ensuite `npm install` et `node server` dans le temrinal.
+Le serveur doit s'exécuter sur localhost avec le port par défaut 3000. A défaut, utilisez le port 3001.
 
 Vous pouvez maintenant aller dans le dossier front, ouvrir le fichier index.html avec live server (VS Code) pour afficher le site web.
